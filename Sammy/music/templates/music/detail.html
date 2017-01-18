@@ -1,0 +1,49 @@
+{% extends 'music/base.html '%}  
+ {% block title %} Django MuziQ - Album Details{% endblock %}
+ {% block body %}
+  <div class="row col-sm-12">
+    <div class="col-sm-4">
+		<img src="{{ album.album_logo }}" height='150px' width='150px'>
+
+		<h1> {{ album.album_title }}</h1>
+		<h3>{{ album.artist }}</h3>
+    </div>
+	<div class="row col-sm-8">
+	    <div class="row col-sm-12">
+		  <button type="button" class="btn btn-primary btn-sm">View All</button>
+          <button type="button" class="btn btn-default btn-sm">Add new song</button>		  
+		</div>
+		<div class="row col-sm-12">
+		<table class="table">
+         <thead>
+          <tr>
+            <th>Title</th>
+            <th>Audio File</th>
+            <th>Favorite</th>
+            <th>Actions</th>
+          </tr>
+         </thead>
+		 <tbody>
+		  {% for song in album.song_set.all %} 
+		   <tr>
+		    <td>
+			  {{song.song_title}}
+			</td>
+			<td>
+			</td>
+			<td>
+			  {% if song.is_favorite %}
+				<img src='http://i.imgur.com/b9b13Rd.png' />
+			  {% endif %}
+			</td>
+            <td>
+            </td>			
+			</tr>
+		  {% endfor %}
+		 </tbody>
+		</table>
+		</div>
+	</div>	  
+   </div>
+ {% endblock %}
+ 
